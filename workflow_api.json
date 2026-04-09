@@ -1,0 +1,321 @@
+{
+  "411": {
+    "_meta": {
+      "title": "VAE Decode"
+    },
+    "inputs": {
+      "vae": [
+        "508",
+        0
+      ],
+      "samples": [
+        "515",
+        0
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "414": {
+    "_meta": {
+      "title": "Create Video"
+    },
+    "inputs": {
+      "fps": [
+        "421",
+        2
+      ],
+      "audio": [
+        "421",
+        1
+      ],
+      "images": [
+        "411",
+        0
+      ]
+    },
+    "class_type": "CreateVideo"
+  },
+  "415": {
+    "_meta": {
+      "title": "Save Video"
+    },
+    "inputs": {
+      "codec": "auto",
+      "video": [
+        "414",
+        0
+      ],
+      "format": "auto",
+      "filename_prefix": "video/ComfyUI"
+    },
+    "class_type": "SaveVideo"
+  },
+  "420": {
+    "_meta": {
+      "title": "Load Video"
+    },
+    "inputs": {
+      "file": "ex-6.mp4"
+    },
+    "class_type": "LoadVideo"
+  },
+  "421": {
+    "_meta": {
+      "title": "Get Video Components"
+    },
+    "inputs": {
+      "video": [
+        "420",
+        0
+      ]
+    },
+    "class_type": "GetVideoComponents"
+  },
+  "422": {
+    "_meta": {
+      "title": "DWPose Estimator"
+    },
+    "inputs": {
+      "image": [
+        "421",
+        0
+      ],
+      "resolution": 512,
+      "detect_body": "enable",
+      "detect_face": "enable",
+      "detect_hand": "enable",
+      "bbox_detector": "yolox_l.onnx",
+      "pose_estimator": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "scale_stick_for_xinsr_cn": "disable"
+    },
+    "class_type": "DWPreprocessor"
+  },
+  "470": {
+    "_meta": {
+      "title": "Create Video"
+    },
+    "inputs": {
+      "fps": [
+        "421",
+        2
+      ],
+      "audio": [
+        "421",
+        1
+      ],
+      "images": [
+        "422",
+        0
+      ]
+    },
+    "class_type": "CreateVideo"
+  },
+  "471": {
+    "_meta": {
+      "title": "Save Video"
+    },
+    "inputs": {
+      "codec": "auto",
+      "video": [
+        "470",
+        0
+      ],
+      "format": "auto",
+      "filename_prefix": "video/ComfyUI"
+    },
+    "class_type": "SaveVideo"
+  },
+  "479": {
+    "_meta": {
+      "title": "Reference Image"
+    },
+    "inputs": {
+      "image": "360110264_174676508834230_1682909070287084544_n.jpg"
+    },
+    "class_type": "LoadImage"
+  },
+  "502": {
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    },
+    "inputs": {
+      "clip": [
+        "507",
+        0
+      ],
+      "text": "beautiful woman dancing, same person throughout entire video, consistent identity, consistent face, Instagram reel, vertical video, photorealistic, natural skin texture, sharp facial details, professional lighting, 4K quality, shot on iPhone, maintaining exact same appearance in every frame"
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "503": {
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    },
+    "inputs": {
+      "clip": [
+        "507",
+        0
+      ],
+      "text": "static, blurry details, subtitles, style, artwork, painting, image, still, overall grayish tone, worst quality, low quality, JPEG compression artifacts, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn face, deformed, disfigured, malformed limbs, fused fingers, frozen frame, cluttered background, three legs, too many people in the background, walking backward, different person, different identity, face swap artifacts, changing face, morphing face, inconsistent appearance"
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "504": {
+    "_meta": {
+      "title": "CLIP Vision Encode"
+    },
+    "inputs": {
+      "crop": "center",
+      "image": [
+        "479",
+        0
+      ],
+      "clip_vision": [
+        "509",
+        0
+      ]
+    },
+    "class_type": "CLIPVisionEncode"
+  },
+  "505": {
+    "_meta": {
+      "title": "KSampler"
+    },
+    "inputs": {
+      "cfg": 1,
+      "seed": 980766135266832,
+      "model": [
+        "513",
+        0
+      ],
+      "steps": 8,
+      "denoise": 1,
+      "negative": [
+        "510",
+        1
+      ],
+      "positive": [
+        "510",
+        0
+      ],
+      "scheduler": "simple",
+      "latent_image": [
+        "510",
+        2
+      ],
+      "sampler_name": "euler"
+    },
+    "class_type": "KSampler"
+  },
+  "506": {
+    "_meta": {
+      "title": "Load Diffusion Model"
+    },
+    "inputs": {
+      "unet_name": "Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader"
+  },
+  "507": {
+    "_meta": {
+      "title": "Load CLIP"
+    },
+    "inputs": {
+      "type": "wan",
+      "device": "default",
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+    },
+    "class_type": "CLIPLoader"
+  },
+  "508": {
+    "_meta": {
+      "title": "Load VAE"
+    },
+    "inputs": {
+      "vae_name": "Wan2_1_VAE_fp32.safetensors"
+    },
+    "class_type": "VAELoader"
+  },
+  "509": {
+    "_meta": {
+      "title": "Load CLIP Vision"
+    },
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    },
+    "class_type": "CLIPVisionLoader"
+  },
+  "510": {
+    "_meta": {
+      "title": "WanAnimateToVideo"
+    },
+    "inputs": {
+      "vae": [
+        "508",
+        0
+      ],
+      "width": 768,
+      "height": 1376,
+      "length": 157,
+      "negative": [
+        "503",
+        0
+      ],
+      "positive": [
+        "502",
+        0
+      ],
+      "batch_size": 1,
+      "face_video": [
+        "479",
+        0
+      ],
+      "pose_video": [
+        "422",
+        0
+      ],
+      "reference_image": [
+        "479",
+        0
+      ],
+      "clip_vision_output": [
+        "504",
+        0
+      ],
+      "video_frame_offset": 0,
+      "continue_motion_max_frames": 1
+    },
+    "class_type": "WanAnimateToVideo"
+  },
+  "513": {
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    },
+    "inputs": {
+      "model": [
+        "506",
+        0
+      ],
+      "lora_name": "lightx2v_I2V_14B_480p_cfg_step_distill_rank128_bf16.safetensors",
+      "strength_model": 0.5
+    },
+    "class_type": "LoraLoaderModelOnly"
+  },
+  "515": {
+    "_meta": {
+      "title": "TrimVideoLatent"
+    },
+    "inputs": {
+      "samples": [
+        "505",
+        0
+      ],
+      "trim_amount": [
+        "510",
+        3
+      ]
+    },
+    "class_type": "TrimVideoLatent"
+  }
+}
