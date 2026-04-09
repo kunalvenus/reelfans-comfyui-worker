@@ -1,4 +1,4 @@
-FROM runpod/worker-comfyui:3.5.1-base
+FROM runpod/worker-comfyui:5.8.5-base
 
 # Custom nodes
 RUN comfy-node-install comfyui_controlnet_aux comfyui-kjnodes
